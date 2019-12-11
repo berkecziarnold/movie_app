@@ -2,6 +2,7 @@ package com.example.movie_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,8 +28,11 @@ public class Login extends AppCompatActivity {
                 String email = e1.getText().toString();
                 String password = e2.getText().toString();
                 Boolean Chkemailpass = db.emailpassword(email,password);
-                if(Chkemailpass==true)
-                    Toast.makeText(getApplicationContext(),"Successfully Login",Toast.LENGTH_SHORT).show();
+                if(Chkemailpass==true) {
+                    Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
+                    Intent homeIntent = new Intent(Login.this, HomeActivity.class);
+                    startActivity(homeIntent);
+                }
                 else
                     Toast.makeText(getApplicationContext(),"Wrong email or password",Toast.LENGTH_SHORT).show();
             }

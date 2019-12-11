@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
     DatabaseHelper db;
     EditText e1,e2,e3;
     Button b1,b2;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,Login.class);
+                Intent i = new Intent(Register.this,Login.class);
                 startActivity(i);
             }
         });
