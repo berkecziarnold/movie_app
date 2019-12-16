@@ -1,7 +1,5 @@
 package com.example.movie_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Login extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class LoginActivity extends AppCompatActivity {
     EditText e1,e2;
     Button b1;
     DatabaseHelper db;
@@ -29,8 +29,8 @@ public class Login extends AppCompatActivity {
                 String password = e2.getText().toString();
                 Boolean Chkemailpass = db.emailpassword(email,password);
                 if(Chkemailpass==true) {
-                    Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
-                    Intent homeIntent = new Intent(Login.this, HomeActivity.class);
+                    Toast.makeText(getApplicationContext(), "Successfully LoginActivity", Toast.LENGTH_SHORT).show();
+                    Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(homeIntent);
                 }
                 else
