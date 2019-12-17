@@ -27,7 +27,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_AVTIVITY"
-                android:value=".MainActivity" />
+                android:value=".HomeActivity" />
         </activity>
 
     </application>
