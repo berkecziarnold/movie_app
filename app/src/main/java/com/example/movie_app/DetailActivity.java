@@ -7,18 +7,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.example.movie_app.model.Movie;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class DetailActivity extends AppCompatActivity {
     TextView nameOfMovie, plotSynopsis, userRating, releaseDate;
     ImageView imageView;
+
+    Movie movie;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -35,17 +37,19 @@ public class DetailActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.thumbnail_image_header);
         nameOfMovie = (TextView) findViewById(R.id.title);
         plotSynopsis = (TextView) findViewById(R.id.plotsynopsis);
-        releaseDate = (TextView) findViewById(R.id.userrating);
+        userRating = (TextView) findViewById(R.id.rating);
         releaseDate = (TextView) findViewById(R.id.releasedate);
 
         Intent intentThatStartedThisActivity = getIntent();
-        if (intentThatStartedThisActivity.hasExtra("original_title")){
+        if (intentThatStartedThisActivity.hasExtra("movies")){
 
-            String thumbnail = getIntent().getExtras().getString("poster_path");
-            String movieName = getIntent().getExtras().getString("original_title");
-            String synopsys = getIntent().getExtras().getString("owerview");
-            String rating = getIntent().getExtras().getString("Vote_avarage");
-            String dateOfRelease = getIntent().getExtras().getString("release_date");
+            movie = getIntent().getParcelableExtra("movies");
+
+            String thumbnail = movie.getPosterPath();
+            String movieName = movie.getOriginalTitle();
+            String synopsys = movie.getOverview();
+            String rating = Double.toString(movie.getVoteAverage());
+            String dateOfRelease = movie.getReleaseDate();
 
             Glide.with(this)
                 .load(thumbnail)

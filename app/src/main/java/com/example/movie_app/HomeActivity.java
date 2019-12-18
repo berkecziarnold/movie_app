@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     ProgressDialog pd;
     private SwipeRefreshLayout swipeContainer;
     public static final String LOG_TAG = MoviesAdapter.class.getName();
-    private static final String API_KEY = "f0af4e8d2c5f9c06f156cdf5ccd84bf7";
+    public static final String API_KEY = "f0af4e8d2c5f9c06f156cdf5ccd84bf7";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
     public Activity getActivity(){
-        Context context =this;
+        Context context = this;
         while (context instanceof ContextWrapper){
             if (context instanceof Activity){
                 return (Activity) context;
@@ -99,19 +99,19 @@ public class HomeActivity extends AppCompatActivity {
 
         try {
             if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty()){
-                Toast.makeText(getApplicationContext(), "Please obtain API Key firstly from themoviedb.org", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please obtain API Key firstly from the moviedb.org", Toast.LENGTH_SHORT).show();
                 pd.dismiss();
                 return;
             }
 
-            Client Client = new Client();
+            Client client = new Client();
             Service apiService =
-                    Client.getClient().create(Service.class);
+                    client.getClient().create(Service.class);
             Call<MovieResponse> call = apiService.getPopularMovies(API_KEY);
 
             call.enqueue(new Callback<MovieResponse>() {
                 @Override
-                public void onResponse(retrofit2.Call<MovieResponse> call, Response<MovieResponse> response) {
+                public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                     List<Movie> movies = response.body().getResults();
                     recyclerView.setAdapter(new MoviesAdapter(getApplicationContext(), movies));
                     recyclerView.smoothScrollToPosition(0);
@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(retrofit2.Call<MovieResponse> call, Throwable t) {
+                public void onFailure(Call<MovieResponse> call, Throwable t) {
                     Log.d("ERROR",t.getMessage());
                     Toast.makeText(HomeActivity.this, "ERROR Fetching Data!", Toast.LENGTH_SHORT).show();
                 }
