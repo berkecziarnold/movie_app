@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
                 Boolean Chkemailpass = db.emailpassword(email,password);
                 if(Chkemailpass==true) {
                     Toast.makeText(getApplicationContext(), "Successfully LoginActivity", Toast.LENGTH_SHORT).show();
-                    Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                    Intent homeIntent = new Intent(LoginActivity.this,ProfileActivity.class);
                     startActivity(homeIntent);
                 }
                 else

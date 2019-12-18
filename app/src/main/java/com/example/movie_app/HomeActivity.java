@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         adapter = new MoviesAdapter(this, movieList);
 
         if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+            recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         }
         else{
             recyclerView.setLayoutManager(new GridLayoutManager(this,4));
