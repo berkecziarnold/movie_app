@@ -65,7 +65,7 @@ public class DetailActivity extends AppCompatActivity {
             movie_id = movie.getId();
 
             Glide.with(this)
-                .load(thumbnail)
+                .load("https://image.tmdb.org/t/p/w500" + thumbnail)
                 .placeholder(R.drawable.load)
                 .into(imageView);
 
